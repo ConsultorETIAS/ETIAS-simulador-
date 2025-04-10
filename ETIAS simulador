@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simulador ETIAS gratuito: Verifica si necesitas un permiso ETIAS para viajar a Europa desde Latinoamérica.">
+    <meta name="keywords" content="ETIAS, Europa, visado, viaje, Schengen, simulador, requisitos, Latinoamérica">
+    <meta name="theme-color" content="#4285f4">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Simulador ETIAS - Verifica requisitos para viajar a Europa">
+    <meta property="og:description" content="Comprueba si necesitas un permiso ETIAS para viajar a Europa desde tu país latinoamericano.">
+    <meta property="og:image" content="./images/etias-og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Simulador ETIAS - Verifica requisitos para viajar a Europa">
+    <meta name="twitter:description" content="Comprueba si necesitas un permiso ETIAS para viajar a Europa desde tu país latinoamericano.">
+    <meta name="twitter:image" content="./images/etias-og-image.jpg">
+    
+    <title>Simulador ETIAS - Verifica si necesitas permiso para viajar a Europa</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" href="./images/favicon.ico">
+    <link rel="apple-touch-icon" href="./images/icon-192x192.png">
+    
+    <!-- Preconecta a servicios externos para mejorar rendimiento -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://js.stripe.com">
+    
+    <!-- Fuentes Google optimizadas -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Schema.org para motores de búsqueda -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Simulador ETIAS",
+      "description": "Herramienta para verificar si necesitas un permiso ETIAS para viajar a Europa desde Latinoamérica",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "EUR"
+      }
+    }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Simulador ETIAS</h1>
+            <p class="tagline">Verifica si necesitas un permiso ETIAS para viajar a Europa</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="simulator-section">
+            <h2>Comprueba si necesitas ETIAS</h2>
+            <p>Selecciona tu país de nacionalidad para saber si necesitas tramitar un permiso ETIAS para viajar a Europa.</p>
+            
+            <form id="etias-form" class="form">
+                <div class="form-group">
+                    <label for="nacionalidad">Selecciona tu país:</label>
+                    <select id="nacionalidad" required>
+                        <option value="">Selecciona tu país</option>
+                        <option value="AR">Argentina</option>
+                        <option value="BO">Bolivia</option>
+                        <option value="BR">Brasil</option>
+                        <option value="CL">Chile</option>
+                        <option value="CO">Colombia</option>
+                        <option value="CR">Costa Rica</option>
+                        <option value="EC">Ecuador</option>
+                        <option value="SV">El Salvador</option>
+                        <option value="GT">Guatemala</option>
+                        <option value="HN">Honduras</option>
+                        <option value="MX">México</option>
+                        <option value="NI">Nicaragua</option>
+                        <option value="PA">Panamá</option>
+                        <option value="PY">Paraguay</option>
+                        <option value="PE">Perú</option>
+                        <option value="UY">Uruguay</option>
+                        <option value="VE">Venezuela</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="button primary-button">Verificar Requisitos</button>
+            </form>
+
+            <div id="resultado" class="result-box" aria-live="polite"></div>
+        </section>
+        
+        <section class="info-section">
+            <h2>¿Qué es ETIAS?</h2>
+            <p>ETIAS (European Travel Information and Authorization System) es un sistema de autorización que será obligatorio para viajeros de países exentos de visa que deseen visitar el espacio Schengen en Europa.</p>
+            <p>Este sistema entrará en vigor en 2025 y tendrá un costo aproximado de €7 para personas entre 18 y 70 años.</p>
+        </section>
+
+        <section class="contact-section">
+            <h2>¿Tienes dudas sobre ETIAS?</h2>
+            <form id="contact-form" action="https://formspree.io/f/tu_form_id" method="POST" class="form">
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" placeholder="Tu correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <label for="mensaje">Tu consulta:</label>
+                    <textarea id="mensaje" name="mensaje" placeholder="Escribe aquí tu pregunta sobre ETIAS" required></textarea>
+                </div>
+                <button type="submit" class="button cta-button">Enviar Consulta</button>
+            </form>
+        </section>
+        
+        <section class="payment-section">
+            <h2>Evaluación personalizada de ETIAS</h2>
+            <p>Obtén una evaluación detallada sobre tus posibilidades de aprobación ETIAS, realizada por expertos en migración europea.</p>
+            <div id="payment-button-container">
+                <button id="stripe-button" class="button cta-button">Solicitar Evaluación ETIAS (€19.99)</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Simulador ETIAS. Esta herramienta es informativa y no constituye asesoramiento legal.</p>
+            <button id="install-button" class="install-button" style="display: none;">Instalar Aplicación</button>
+        </div>
+    </footer>
+    
+    <script src="./js/app.js" defer></script>
+    <script src="./js/stripe-integration.js" defer></script>
+    <script>
+        // Registrar el Service Worker para PWA
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(reg => console.log('Service Worker registrado'))
+                    .catch(err => console.log('Error al registrar Service Worker:', err));
+            });
+        }
+    </script>
+</body>
+</html>
